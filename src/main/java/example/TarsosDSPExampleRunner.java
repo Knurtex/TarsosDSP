@@ -10,7 +10,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import example.cli.SharedCommandLineUtilities;
+import example.cli.feature_extractor.FeatureExtractor;
+import example.gui.Delay;
+import example.gui.Flanger;
+import example.gui.GoertzelDTMF;
+import example.gui.HaarWaveletAudioCompression;
+import example.gui.OscilloscopeExample;
 import example.gui.PitchDetectorExample;
+import example.gui.SoundDetector;
 import example.util.Trie;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -148,16 +155,27 @@ public class TarsosDSPExampleRunner {
 
         final List<TarsosDSPExampleStarter> guiExamples = new ArrayList<>();
         final List<TarsosDSPExampleStarter> cliExamples = new ArrayList<>();
-
       
-        Set<Class<? extends TarsosDSPExampleStarter>> modules =  new HashSet<>();
-        modules.add(PitchDetectorExample.PitchDetectorStarter.class);
+      
+      
+      Set<Class<? extends TarsosDSPExampleStarter>> modules =
+          new HashSet<>();
+      modules.add(Delay.DelayStarter.class);
+      modules.add(Flanger.FlangerStarter.class);
+      modules.add(GoertzelDTMF.GoertzelDTMFStarter.class);
+      modules.add(OscilloscopeExample.HaarWaveletAudioCompressionStarter.class);
+      modules.add(PitchDetectorExample.PitchDetectorStarter.class);
+      modules.add(SoundDetector.SoundDetectorStarter.class);
+      modules.add(HaarWaveletAudioCompression.HaarWaveletAudioCompressionStarter.class);
+      modules.add(FeatureExtractor.FeatureExtractorStarter.class);
+      
         for(Class<? extends TarsosDSPExampleStarter> module : modules) {
             TarsosDSPExampleStarter starter = null;
             try {
 
                 starter = module.getDeclaredConstructor().newInstance();
             } catch (Exception e) {
+              System.out.println(module.getName());
                 //should not happen, instantiation should not be a problem
                 e.printStackTrace();
             }

@@ -22,12 +22,6 @@
             <version>5.11.0-M1</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>0.10.2</version>
-        </dependency>
     </dependencies>
 <build>
     <plugins>
@@ -42,11 +36,6 @@
                         <mainClass>example.TarsosDSPExampleRunner</mainClass>
                         <addClasspath>true</addClasspath>
                     </manifest>
-                    <manifestEntries>
-                        <mode>development</mode>
-                        <url>${project.url}</url>
-                        <key>value</key>
-                    </manifestEntries>
                 </archive>
             </configuration>
         </plugin>

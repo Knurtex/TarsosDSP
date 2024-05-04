@@ -1,15 +1,26 @@
 package example;
 
-import example.cli.SharedCommandLineUtilities;
-import example.util.Trie;
-import org.reflections.Reflections;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.GridLayout;
 import java.lang.reflect.InvocationTargetException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import example.cli.SharedCommandLineUtilities;
+import example.gui.PitchDetectorExample;
+import example.util.Trie;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 
 /**
@@ -130,7 +141,7 @@ public class TarsosDSPExampleRunner {
     }
 
 
-    public static void main(String... args){
+    public static void main(String[] args){
 
 
         boolean startGUI = args.length == 0;
@@ -138,9 +149,9 @@ public class TarsosDSPExampleRunner {
         final List<TarsosDSPExampleStarter> guiExamples = new ArrayList<>();
         final List<TarsosDSPExampleStarter> cliExamples = new ArrayList<>();
 
-        //find all example starters, instantiate and add to list
-        Reflections reflections = new Reflections("be.tarsos.dsp");
-        Set<Class<? extends TarsosDSPExampleStarter>> modules =  reflections.getSubTypesOf(TarsosDSPExampleStarter.class);
+      
+        Set<Class<? extends TarsosDSPExampleStarter>> modules =  new HashSet<>();
+        modules.add(PitchDetectorExample.PitchDetectorStarter.class);
         for(Class<? extends TarsosDSPExampleStarter> module : modules) {
             TarsosDSPExampleStarter starter = null;
             try {

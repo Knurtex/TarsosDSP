@@ -7,5 +7,6 @@ build/*
 /core/build/*
 /examples/build/*
 /jvm/build/*
-y
+
+target/*
 *.iml

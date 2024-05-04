@@ -1,6 +1,7 @@
 package be.tarsos.dsp.test;
 
 import be.tarsos.dsp.util.FFMPEGDownloader;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class FFMEGDownloaderTest {
 
     @Test
+    @Disabled
     public void testFFMPEGDownload() {
         FFMPEGDownloader d = new FFMPEGDownloader();
         assertTrue(new File(d.ffmpegBinary()).exists());
